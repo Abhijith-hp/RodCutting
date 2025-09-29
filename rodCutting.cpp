@@ -1,4 +1,3 @@
-// User function Template for C++
 
 class Solution {
   public:
@@ -7,7 +6,7 @@ class Solution {
         int size = price.size();
         vector<vector<int>>dp(size,vector<int>(size+1,-1));
         vector<int>prev(size+1,0);
-        vector<int>curr(size+1,0);
+       
         for(int i=0;i<=size;i++)
             prev[i] = i*price[0];
         for(int i=1;i<size;i++){
@@ -16,10 +15,10 @@ class Solution {
         int take = INT_MIN;
         int rodLength = i+1;
         if(rodLength<=j)
-            take = price[i]+curr[j-rodLength];
-        curr[j] = max(take,nonTake); 
+            take = price[i]+prev[j-rodLength];
+         prev[j] = max(take,nonTake); 
             }
-            prev=curr;
+       
         }
         return prev[size];
         
